@@ -1,0 +1,102 @@
+body {
+    background-color: white;
+    font: normal 11px Tahoma,Verdana,Arial,Sans-Serif;
+    color: #222;
+    height: 380px;
+}
+
+.fb_privacy {
+    display: block;
+    display: inline-block;
+    margin: 0px 3px;
+    position: relative;
+}
+
+/* ===[ For demonstration ]=== */
+
+.fb_privacy { margin-top: 50px }
+
+/* ===[ End demonstration ]=== */
+
+.fb_privacy .fb_privacy_button {
+    cursor: pointer;
+    width: auto;
+    display: inline-block;
+    padding: 4px 5px;
+    border: 1px solid #AAA;
+    -webkit-border-radius: 2px;
+    -moz-border-radius: 2px;
+    border-radius: 2px;
+    font-weight: bold;
+    color: #717780;
+    line-height: 16px;
+    text-decoration: none !important;
+    background: white;
+}
+
+.fb_privacy input[type="checkbox"]:checked +  .fb_privacy_button {
+    border: 1px solid #3B5998;
+    color: white;
+    background: #6D84B4;
+    -moz-border-radius-topleft: 2px;
+    -moz-border-radius-topright: 2px;
+    -moz-border-radius-bottomright: 0px;
+    -moz-border-radius-bottomleft: 0px;
+    -webkit-border-radius: 2px 2px 0px 0px;
+    border-radius: 2px 2px 0px 0px;
+    border-bottom-color: #6D84B4;
+}
+
+.fb_privacy input[type="checkbox"] + .fb_privacy_button .arrow {
+    display: inline-block;
+    width: 0px;
+    height: 0px;
+    border-top: 5px solid #6B7FA7;
+    border-right: 5px solid transparent;
+    border-left: 5px solid transparent;
+}
+
+.fb_privacy input[type="checkbox"]:checked + .fb_privacy_button .arrow { border-color: white transparent transparent transparent }
+
+.fb_privacy .fb_privacy_content {
+    position: absolute;
+    border: 1px solid #777;
+    padding: 0px;
+    background: white;
+    margin: 0;
+    display: none;
+}
+
+.fb_privacy .fb_privacy_content li {
+    list-style: none;
+    margin-left: 0px;
+    line-height: 16px;
+    border-top: 1px solid #FFF;
+    border-bottom: 1px solid #FFF;
+    margin-top: 2px;
+    margin-bottom: 2px;
+}
+
+.fb_privacy .fb_privacy_content li:hover {
+    border-top-color: #3B5998;
+    border-bottom-color: #3B5998;
+    background: #6D84B4;
+}
+
+.fb_privacy .fb_privacy_content li a {
+    display: block;
+    padding: 2px 7px;
+    padding-right: 15px;
+    color: black;
+    text-decoration: none !important;
+    white-space: nowrap;
+}
+
+.fb_privacy .fb_privacy_content li:hover a {
+    color: white;
+    text-decoration: none !important;
+}
+
+.fb_privacy input[type="checkbox"]:checked ~ .fb_privacy_content { display: block }
+
+.fb_privacy input[type="checkbox"] { display: none }
