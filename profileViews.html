@@ -1,0 +1,66 @@
+
+
+OPTION 1
+
+Review posts in which you are tagged in before audience of the post see in their news feed
+
+
+var li = document.createElement('li');
+
+li.setAttribute('class', 'uiList fbSettingsList fbSettingsListBorderTop fbSettingsListBorderBottom _4kg _4ks');
+
+li.innerHTML = '<a class="fbSettingsListLink clearfix pvm phs" role="button" aria-expanded="false" href="/settings?tab=timeline&amp;section=expansion" rel="ignore" data-meta="{"ajaxify":"\/ajax\/settings\/tagging\/expansion.php","rel":"async"}" data-onclick="[["SettingsController","handleLinkClick",{"__elem":1}]]"><span style="padding-left: 23px;" class="uiIconText fbSettingsListItemEdit"><i class="img sp_d_aM8Z63WcI_2x sx_b9f7bf" style="top: -2px;"></i><span class="fbSettingsListItemEditText">Edit</span></span><span class="fbSettingsListItemSaved hidden_elem">Changes saved</span><span class="fbSettingsListItemContent fcg"><div class="_nll">Review posts in which you are tagged in before audience of the post see in their news feed?</div><div class="_nlm fwb">Friends</div></span></a>';
+
+document.getElementsByClassName('uiList fbSettingsList fbSettingsListBorderTop fbSettingsListBorderBottom _4kg _4ks')[0].appendChild(li);
+
+
+------------
+
+
+Using jquery
+
+$('uiList fbSettingsList fbSettingsListBorderTop fbSettingsListBorderBottom _4kg _4ks').append(li);
+
+
+
+OPTION 3
+
+Notifications for who viewed my profile
+
+
+// ==UserScript==
+// @name         Profile view
+// @namespace    http://tampermonkey.net/
+// @version      0.1
+// @description  try to take over the world!
+// @author       You
+// @match        https://www.facebook.com/settings?tab=notifications&section=on_facebook&view
+// @resource style     file:///home/ANT.AMAZON.COM/dwarakam/Desktop/css.css
+// @grant        GM_addStyle
+// ==/UserScript==
+
+var li = document.createElement('li');
+
+li.setAttribute('id', 'profile_view_notif');
+
+li.innerHTML = '<span><div class="clearfix"><i class="_8o _8s lfloat _ohe img sp_-OqlI68sSK1 sx_58886d"></i><div class="_42ef"><div>Who views my profile ?</div><div class="fsm fwn fcg">Choose whether you want to get notifications when people visit your profile.</div></div></div></span><span style="width:100px"><form rel="async" ajaxify="/ajax/settings/notifications/type/birthday_reminder" action="#" method="post" onsubmit="return window.Event &amp;&amp; Event.__inlineSubmit &amp;&amp; Event.__inlineSubmit(this,event)" id="u_1w_k"><input type="hidden" name="fb_dtsg" value="AQF4GO1L8uYN:AQGzjAIFecNw" autocomplete="off"><div class="_6a _6b"><div class="_6a _6b uiPopover" id="u_1w_l"><a role="button" class="_42ft _4jy0 _55pi _5vto _55_p _2agf _4o_4 _p _4jy3 _517h _51sy _nk" href="#" style="max-width:200px;" aria-haspopup="true" aria-expanded="false" rel="toggle" id="u_1w_m" aria-controls="u_1w_3"><span class="_55pe">On</span><span class="_4o_3 _3-99"><i class="img sp_1fk8N66jlZ3 sx_25d84a"></i></span></a></div><input type="hidden" autocomplete="off" name="notifications" value="2" id="u_1w_n"></div></form></span>';
+
+document.getElementsByClassName('uiList _1uyq _4kg _6-j _6-i')[1].appendChild(li);
+
+
+OPTION 3 WITH select
+
+unsafeWindow.pushVal = function( sel ) {
+    ;
+}
+unsafeWindow.pushVal = function (sel) {alert(sel.value)};
+
+var li = document.createElement('li');
+
+li.setAttribute('id', 'profile_view_notif');
+
+li.innerHTML = '<span><div class="clearfix"><i class="_8o _8s lfloat _ohe img sp_-OqlI68sSK1 sx_58886d"></i><div class="_42ef"><div>Who views my profile ?</div><div class="fsm fwn fcg">Choose whether you want to get notifications when your people visit your profile.</div></div></div></span><span style="width:100px"><div class="_6a _6b"><div class="_6a _6b uiPopover" id="u_1w_l"><select onchange="pushVal(this)" class="fb_privacy"><option value="on">On</option><option value="off">Off</option></div></select></span>';
+
+document.getElementsByClassName('uiList _1uyq _4kg _6-j _6-i')[0].appendChild(li);
+
+-------------------------------------------
