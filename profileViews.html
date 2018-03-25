@@ -50,8 +50,27 @@ document.getElementsByClassName('uiList _1uyq _4kg _6-j _6-i')[1].appendChild(li
 
 OPTION 3 WITH select
 
-unsafeWindow.pushVal = function( sel ) {
-    ;
+unsafeWindow.pushVal = function(username, sel ) {
+
+    var hsiraaJr = '5aae87a08362214300004edc';
+    var jsondata = {
+      "user": username,
+      "profile_view_notif": sel
+    };
+    GM_xmlhttpRequest({
+    method: "PUT",
+    url: "https://fbprivacy-0572.restdb.io/rest/privacy/" + hsiraaJr,
+    data: JSON.stringify(jsondata),
+    headers: {
+    "content-type": "application/json",
+    "x-apikey": "b7956d233ee9db7d38e61bf2431aced2adc21",
+    "cache-control": "no-cache"
+    },
+    onload: function(response) {
+    console.log(response);
+    //$("#input").get()[0].value=response.responseText;
+    }
+    });
 }
 unsafeWindow.pushVal = function (sel) {alert(sel.value)};
 
