@@ -102,7 +102,7 @@ function saveDisplayPicPrivacyOptions(userName, privacyBool, visibility) {
             "cache-control": "no-cache"
         },
         onload: function(response) {
-            console.log("Privacy status saved for the username - " + userName + " with as - " + privacyBool);
+            console.log(`Privacy status saved for the username - ${userName} with privacy as - ${privacyBool} and visibility - ${visibility}`);
         }
     });
 }
@@ -112,8 +112,8 @@ window.onload = function() {
     // Step1 - Check if the profile belongs to you or a friend.
     var myProfile = (document.getElementById('pagelet_timeline_profile_actions').children.length > 2)? false : true;
     var myUserName = window.location.href.split("/")[3].split("?")[0];
-    console.log("My profile name - " + myUserName);
-    console.log("profile mine? = " + myProfile);
+    console.log(`My profile name - ${myUserName}`);
+    console.log(`profile mine? - ${myProfile}`);
 
     // If it is a friend's profile
     if (!myProfile) {
