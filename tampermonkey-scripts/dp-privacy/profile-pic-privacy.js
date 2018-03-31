@@ -6,8 +6,8 @@
 // @match      https://www.facebook.com/*
 // @copyright  2018+, aarish.in
 // @require https://code.jquery.com/jquery-3.3.1.min.js
-// @resource privacy-options-html http://192.168.1.108:8000/privacy-options.html
-// @resource privacy-options-css https://aarishramesh.github.io/facebook-privacy/css.css
+// @resource privacy-options-html https://aarishramesh.github.io/facebook-privacy/tampermonkey-scripts/dp-privacy/privacy-options.html
+// @resource privacy-options-css https://aarishramesh.github.io/facebook-privacy/tampermonkey-scripts/dp-privacy/css.css
 // @grant GM_addStyle
 // @grant GM_getResourceText
 // @grant GM_xmlhttpRequest
