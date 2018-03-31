@@ -17,6 +17,20 @@ var apiKey = "b7956d233ee9db7d38e61bf2431aced2adc21";
 var dbURL = "https://fbprivacy-0572.restdb.io/rest/privacy/";
 var userNameIdMap = { "hsiraa.hsamar.7": "5aae79888362214300004e68", "hsiraa.junior.1": "5aae843f8362214300004e69" };
 var fb_dp_privacy_options = { "fb_dp_privacy_false": false, "fb_dp_privacy_true": true };
+var fb_dp_visibility_map = { "Public": 1, "Friends": 2, "Only Me": 3};
+
+/*
+  This method will help us create a Guava like BiMap.
+  Reference - https://stackoverflow.com/a/9907509
+*/
+Object.prototype.getKeyByValue = function( value ) {
+    for( var prop in this ) {
+        if( this.hasOwnProperty( prop ) ) {
+             if( this[ prop ] === value )
+                 return prop;
+        }
+    }
+};
 
 function fetchUserProfilePicPrivacyOptions(userName) {
 
@@ -48,16 +62,35 @@ function myProfileSettings(userName) {
     $('.fbTimelineProfilePicSelector').eq(0).html(GM_getResourceText("privacy-options-html"));
     document.getElementsByClassName("fbTimelineProfilePicSelector")[0].style.overflow="visible";
 
+    /*
+      This is to set the visibility option in the
+      dropdown for the user.
+    */
+    GM_xmlhttpRequest({
+        method: "GET",
+        url: dbURL + userNameIdMap[userName],
+        headers: {
+            "content-type": "application/json",
+            "x-apikey": apiKey,
+            "cache-control": "no-cache"
+        },
+        onload: function(response) {
+             var responseValue = JSON.parse(response.responseText);
+             $('#fb_dp_privacy_selected').html(fb_dp_visibility_map.getKeyByValue(responseValue.visibility));
+        }
+    });
+
     $('.fb_dp_privacy_options').click(function() {
         $('#fb_dp_privacy_selected').html(this.innerHTML);
-        saveDisplayPicPrivacyOptions(userName, fb_dp_privacy_options[this.id]);
+        saveDisplayPicPrivacyOptions(userName, fb_dp_privacy_options[this.id], fb_dp_visibility_map[this.innerHTML]);
     });
 }
 
-function saveDisplayPicPrivacyOptions(userName, privacyBool) {
+function saveDisplayPicPrivacyOptions(userName, privacyBool, visibility) {
     var jsondata = {
         "user": userName,
-        "privacy": privacyBool
+        "privacy": privacyBool,
+        "visibility": visibility
     };
     GM_xmlhttpRequest({
         method: "PUT",
