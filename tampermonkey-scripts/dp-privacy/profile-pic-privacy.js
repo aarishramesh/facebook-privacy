@@ -38,8 +38,8 @@ function fetchUserProfilePicPrivacyOptions(userName) {
 
 function fetchUserProfilePicPrivacyOptionsCallBack(response) {
     var responseValue = JSON.parse(response.responseText);
-    if (!responseValue.privacy) {
-        document.getElementsByClassName("profilePic img")[0].src="https://raw.githubusercontent.com/aarishramesh/facebook-privacy/gh-pages/pic/fb-no-pic.jpg";
+    if (responseValue.privacy) {
+        document.getElementsByClassName("profilePic img")[0].src="https://raw.githubusercontent.com/aarishramesh/facebook-privacy/master/tampermonkey-scripts/dp-privacy/pic/fb-no-pic.jpg";
     }
 }
 
