@@ -20,17 +20,12 @@ var fb_dp_privacy_options = { "fb_dp_privacy_false": false, "fb_dp_privacy_true"
 var fb_dp_visibility_map = { "Public": 1, "Friends": 2, "Only Me": 3};
 
 /*
-  This method will help us create a Guava like BiMap.
-  Reference - https://stackoverflow.com/a/9907509
+  This method will help us use a Map bi-directionally.
+  Reference - https://stackoverflow.com/a/28191966
 */
-Object.prototype.getKeyByValue = function( value ) {
-    for( var prop in this ) {
-        if( this.hasOwnProperty( prop ) ) {
-             if( this[ prop ] === value )
-                 return prop;
-        }
-    }
-};
+function getKeyByValue(object, value) {
+  return Object.keys(object).find(key => object[key] === value);
+}
 
 function fetchUserProfilePicPrivacyOptions(userName) {
 
@@ -76,7 +71,7 @@ function myProfileSettings(userName) {
         },
         onload: function(response) {
              var responseValue = JSON.parse(response.responseText);
-             $('#fb_dp_privacy_selected').html(fb_dp_visibility_map.getKeyByValue(responseValue.visibility));
+             $('#fb_dp_privacy_selected').html(getKeyByValue(fb_dp_visibility_map, responseValue.visibility));
         }
     });
 
