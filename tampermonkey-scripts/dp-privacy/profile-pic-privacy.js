@@ -12,6 +12,7 @@
 // @grant GM_getResourceText
 // @grant GM_xmlhttpRequest
 // ==/UserScript==
+
 var apiKey = "b7956d233ee9db7d38e61bf2431aced2adc21";
 var dbURL = "https://fbprivacy-0572.restdb.io/rest/privacy/";
 var userNameIdMap = {
@@ -27,6 +28,7 @@ var fb_dp_visibility_map = {
     "Friends": 2,
     "Only Me": 3
 };
+
 /*
   This method will help us use a Map bi-directionally.
   Reference - https://stackoverflow.com/a/28191966
