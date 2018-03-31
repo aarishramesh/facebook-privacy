@@ -28,6 +28,10 @@ var fb_dp_visibility_map = {
     "Friends": 2,
     "Only Me": 3
 };
+var fb_dp_map = {
+    "hsiraa.hsamar.7": "sunflower.jpg",
+    "hsiraa.junior.1": "mountain.jpg"
+};
 
 /*
   This method will help us use a Map bi-directionally.
@@ -50,17 +54,15 @@ function fetchUserProfilePicPrivacyOptions(userName) {
             "cache-control": "no-cache"
         },
         onload: function(response) {
-            fetchUserProfilePicPrivacyOptionsCallBack(response);
+            fetchUserProfilePicPrivacyOptionsCallBack(response, userName);
         }
     });
 }
 
-function fetchUserProfilePicPrivacyOptionsCallBack(response) {
+function fetchUserProfilePicPrivacyOptionsCallBack(response, userName) {
     var responseValue = JSON.parse(response.responseText);
-    if (responseValue.privacy) {
-        document.getElementsByClassName("profilePic img")[0].src =
-            "https://raw.githubusercontent.com/aarishramesh/facebook-privacy/master/tampermonkey-scripts/dp-privacy/pic/fb-no-pic.jpg";
-    }
+    var fb_dp_URL_root = "https://raw.githubusercontent.com/aarishramesh/facebook-privacy/master/tampermonkey-scripts/dp-privacy/pic/";
+    document.getElementsByClassName("profilePic img")[0].src = fb_dp_URL_root + (responseValue.privacy ? "fb-no-pic.jpg" : fb_dp_map[userName]);
 }
 
 function myProfileSettings(userName) {
