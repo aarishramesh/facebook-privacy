@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>fb</title>
+    <link rel="stylesheet" href="/css.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+</head>
+
+<body>
+  <div class="fb_privacy" id="fb_privacy">
+              <input type="checkbox" id="drop1" />
+      <label for="drop1" class="fb_privacy_button" id="fb_privacy_options_selected"><span id="fb_dp_privacy_selected">Public</span><span class="fb_privacy_arrow"></span></label>
+      <ul class="fb_privacy_content">
+          <li><a href="#" class="fb_dp_privacy_options" id="fb_privacy_public">Public</a></li>
+          <li><a href="#" class="fb_dp_privacy_options" id="fb_privacy_friends">Friends</a></li>
+          <li><a href="#" class="fb_dp_privacy_options" id="fb_privacy_me">Only Me</a></li>
+      </ul>
+  </div>
+
+  <script>
+  $(document).ready(function() {
+    $('.fb_dp_privacy_options').click(function() {
+    $('#fb_privacy_options_selected').innerHTML = this.innerHTML;
+    console.log(this.id);
+    console.log(this.innerHTML);
+  });
+});
+
+  </script>
+</body>
+</html>
