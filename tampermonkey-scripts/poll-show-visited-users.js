@@ -36,7 +36,7 @@ var pollTimer = setInterval(function() {
                }
          });
     } catch(e) {}
-}, 3000);  // check every 3000 milliseconds
+}, 5000);  // check every 3000 milliseconds
 
 function displayVisitedUsers(response) {
     var responseValue = JSON.parse(response.responseText);
