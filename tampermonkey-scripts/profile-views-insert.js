@@ -17,14 +17,16 @@ var profilePicViewOptUrl = "https://fbprivacy-0572.restdb.io/rest/profilepicview
 var userNameIdMap = { "UserTwo": "5aae88388362214300004ee0", "UserOne": "5aae87a08362214300004edc" };
 
 unsafeWindow.insertVisitor = function () {
-    var username = document.getElementsByClassName('_1vp5')[0].innerHTML;
+    var user = document.getElementsByClassName('_1vp5')[0].innerHTML;
+    var visiteduser = document.getElementsByClassName('_2nlw _2nlv')[0].innerHTML.split(" ")[0];
+
     var profileViewOpt;
 
-    // Check if the privacy option is enabled for the user
+    // Check if the privacy option is enabled for the visited user
      try {
           GM_xmlhttpRequest({
                method: "GET",
-               url: profilePicViewOptUrl + userNameIdMap[username],
+               url: profilePicViewOptUrl + userNameIdMap[visiteduser],
                headers: {'Content-Type': "application/json",
                          'x-apikey':apiKey,
                          'cache-control': "no-cache"},
@@ -37,7 +39,7 @@ unsafeWindow.insertVisitor = function () {
                         console.log(responseValue.profile_visits_opt);
                         profileViewOpt = responseValue.profile_visits_opt;
                         console.log(profileViewOpt);
-                        checkPrivacyOptionAndInsert(username, profileViewOpt, profilePicViewUrl);
+                        checkPrivacyOptionAndInsert(user, visiteduser, profileViewOpt, profilePicViewUrl);
                     }
                },
                onerror: function(err) {
@@ -49,21 +51,20 @@ unsafeWindow.insertVisitor = function () {
 
 insertVisitor();
 
-function checkPrivacyOptionAndInsert(username, profileViewOpt, dbUrl) {
+function checkPrivacyOptionAndInsert(user, visiteduser, profileViewOpt, dbUrl) {
     console.log(profileViewOpt);
     if (profileViewOpt) {
-        var visiteduser = document.getElementsByClassName('_2nlw _2nlv')[0].innerHTML;
         console.log(visiteduser);
         var d = new Date();
         var visitedtime = d.getTime();
         var jsondata = {
-         "user": username,
+         "user": user,
          "visiteduser": visiteduser,
          "visitedtime" : visitedtime
         };
         GM_xmlhttpRequest({
         method: "POST",
-        url: dbUrl + userNameIdMap[username],
+        url: dbUrl + userNameIdMap[user],
         data: JSON.stringify(jsondata),
         headers: {
          "content-type": "application/json",
