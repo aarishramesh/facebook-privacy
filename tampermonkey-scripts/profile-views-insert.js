@@ -4,7 +4,7 @@
 // @version      0.1
 // @description  try to take over the world!
 // @author       You
-// @match        https://www.facebook.com/hsiraa.junior.1*friends*
+// @match        https://www.facebook.com/*friends*
 // @resource style     file:///home/ANT.AMAZON.COM/dwarakam/Desktop/css.css
 // @grant        GM_addStyle
 // @grant GM_getResourceText
@@ -14,10 +14,10 @@
 var apiKey = "b7956d233ee9db7d38e61bf2431aced2adc21";
 var profilePicViewUrl = "https://fbprivacy-0572.restdb.io/rest/profilepicview/";
 var profilePicViewOptUrl = "https://fbprivacy-0572.restdb.io/rest/profilepicviewopt/";
-var userNameIdMap = { "hsiraa.hsamar.7": "5aae88388362214300004ee0", "hsiraa.junior.1": "5aae87a08362214300004edc" };
+var userNameIdMap = { "UserTwo": "5aae88388362214300004ee0", "UserOne": "5aae87a08362214300004edc" };
 
 unsafeWindow.insertVisitor = function () {
-    var username = "hsiraa.junior.1";
+    var username = document.getElementsByClassName('_1vp5')[0].innerHTML;
     var profileViewOpt;
 
     // Check if the privacy option is enabled for the user
