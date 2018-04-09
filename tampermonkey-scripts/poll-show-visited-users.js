@@ -45,7 +45,7 @@ var pollTimer = setInterval(function() {
                }
          });
     } catch(e) {}
-}, 2000);
+}, 5000);
 
 function showUsersVisited(apiKey, dbURL, user, profileViewOpt, lastfetchedtime){
      if (profileViewOpt) {
@@ -83,9 +83,12 @@ function displayVisitedUsers(response, user) {
             if (val.visiteduser != undefined && val.visitedtime != undefined) {
                console.log(val.visiteduser + " : " + val.visitedtime);
                d = new Date(val.visitedtime);
-               var msg = val.visiteduser + " has visited user profile " +
+               var msg = val.user + " has visited user profile " +
                    " at " + d;
+
+               // TODO - Replace with a styled alert box
                alert(msg);
+
                // Update the lastfetched time for the user
                lastfetchedtime = val.visitedtime;
 
