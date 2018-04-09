@@ -49,7 +49,7 @@ var pollTimer = setInterval(function() {
 
 function showUsersVisited(apiKey, dbURL, user, profileViewOpt, lastfetchedtime){
      if (profileViewOpt) {
-         var queryUrl = dbURL + "?q={\"visiteduser\": \"" + user + " " + user + "\", \"visitedtime\":{\"$gt\":" + lastfetchedtime+ "}}";
+         var queryUrl = dbURL + "?q={\"visiteduser\": \"" + user + "\", \"visitedtime\":{\"$gt\":" + lastfetchedtime+ "}}";
          console.log(queryUrl);
 
           GM_xmlhttpRequest({
