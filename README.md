@@ -1,15 +1,15 @@
 # README.md
 
-## Credentials
+### What ?
 
-### Database
-restdb.io
+A Project on experimental Facebook tweaks to achieve privacy as a part of a phd paper and project
 
-```
-username - aarish@aarish.in
-password - DummyAccount@123
-```
-### Facebook accounts
-```
-1. username - aarish@aarish.in; password - Dummyaccount
-2. username - contact@aarish.in; password - Dummyaccount
+Following are the tweaks attempted implemented to achieve more privacy
+
+## Dp privacy
+
+## Profile visits
+
+## Review posts
+
+### How ?
